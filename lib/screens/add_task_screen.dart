@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/services.dart';
+//import 'package:flutter/painting.dart';
+//import 'package:flutter/services.dart';
 
 class AddTaskScreen extends StatelessWidget {
+  //
+  final Function addTaskCallback;
+
+  AddTaskScreen(this.addTaskCallback);
+
   @override
   Widget build(BuildContext context) {
+    String newTaskTitle;
+
     return Container(
       padding: EdgeInsets.all(20.0),
       color: Color(0xFF757575),
@@ -36,14 +43,23 @@ class AddTaskScreen extends StatelessWidget {
             TextField(
               keyboardType: TextInputType.text,
               textAlign: TextAlign.center,
-              onChanged: (value) {},
+              onChanged: (newText) {
+                print('add_task_screen: $newText');
+                newTaskTitle = newText;
+                print(newTaskTitle);
+                //
+              },
               autofocus: true,
             ),
             SizedBox(
               height: 20.0,
             ),
             FlatButton(
-              onPressed: () {},
+              onPressed: () {
+                print("FlatButton: onPressed");
+                print(newTaskTitle);
+                addTaskCallback(newTaskTitle);
+              },
               child: Text(
                 'Add todo',
                 style: TextStyle(
