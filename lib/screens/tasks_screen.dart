@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
+import 'package:todoey_flutter/widgets/tasks_list.dart';
+import 'package:todoey_flutter/screens/add_task_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:todoey_flutter/models/task_data.dart';
-import 'package:todoey_flutter/widget/tasks_list.dart';
-import 'package:todoey_flutter/screens/add_task_screen.dart';
 
 class TasksScreen extends StatelessWidget {
   @override
@@ -11,24 +10,16 @@ class TasksScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showModalBottomSheet(
-            context: context,
-            builder: (context) => AddTaskScreen((newTaskTitle) {
-                  print('tasks_screen: $newTaskTitle');
-//                  setState(() {
-//                    tasks.add(Task(
-//                      name: newTaskTitle,
-//                    ));
-//                  });
-                  Navigator.pop(context);
-                }),
-          );
-        },
         backgroundColor: Colors.lightBlueAccent,
         child: Icon(
           Icons.add,
         ),
+        onPressed: () {
+          showModalBottomSheet(
+            context: context,
+            builder: (context) => AddTaskScreen(),
+          );
+        },
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

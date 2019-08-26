@@ -1,23 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:todoey_flutter/models/task.dart';
 import 'package:provider/provider.dart';
-//import 'package:flutter/painting.dart';
-//import 'package:flutter/services.dart';
 import 'package:todoey_flutter/models/task_data.dart';
 
 class AddTaskScreen extends StatelessWidget {
-  //
-  final Function addTaskCallback;
-
-  AddTaskScreen(this.addTaskCallback);
-
   @override
   Widget build(BuildContext context) {
     String newTaskTitle;
 
     return Container(
-      padding: EdgeInsets.all(20.0),
-      color: Color(0xFF757575),
+      color: Color(0xff757575),
       child: Container(
+        padding: EdgeInsets.all(20.0),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
@@ -28,39 +22,26 @@ class AddTaskScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            SizedBox(
-              height: 10.0,
-            ),
             Text(
-              "Add Task",
+              'Add Task',
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Colors.lightBlueAccent,
                 fontSize: 30.0,
+                color: Colors.lightBlueAccent,
               ),
             ),
-            SizedBox(
-              height: 10.0,
-            ),
             TextField(
+              autofocus: true,
               keyboardType: TextInputType.text,
               textAlign: TextAlign.center,
               onChanged: (newText) {
-                print('add_task_screen: $newText');
                 newTaskTitle = newText;
-                print(newTaskTitle);
-                //
               },
-              autofocus: true,
             ),
             SizedBox(
               height: 20.0,
             ),
             FlatButton(
-              onPressed: () {
-                Provider.of<TaskData>(context).addTask(newTaskTitle);
-                //addTaskCallback(newTaskTitle);
-              },
               child: Text(
                 'Add todo',
                 style: TextStyle(
@@ -68,6 +49,10 @@ class AddTaskScreen extends StatelessWidget {
                 ),
               ),
               color: Colors.lightBlueAccent,
+              onPressed: () {
+                Provider.of<TaskData>(context).addTask(newTaskTitle);
+                Navigator.pop(context);
+              },
             )
           ],
         ),
