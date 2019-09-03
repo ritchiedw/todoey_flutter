@@ -32,18 +32,14 @@ class AddTaskScreen extends StatelessWidget {
             ),
             TextField(
               autofocus: true,
-              keyboardType: TextInputType.text,
               textAlign: TextAlign.center,
               onChanged: (newText) {
                 newTaskTitle = newText;
               },
             ),
-            SizedBox(
-              height: 20.0,
-            ),
             FlatButton(
               child: Text(
-                'Add todo',
+                'Add',
                 style: TextStyle(
                   color: Colors.white,
                 ),
@@ -53,7 +49,7 @@ class AddTaskScreen extends StatelessWidget {
                 Provider.of<TaskData>(context).addTask(newTaskTitle);
                 Navigator.pop(context);
               },
-            )
+            ),
           ],
         ),
       ),
