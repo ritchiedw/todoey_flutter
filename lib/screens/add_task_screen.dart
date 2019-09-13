@@ -34,7 +34,9 @@ class AddTaskScreen extends StatelessWidget {
               autofocus: true,
               textAlign: TextAlign.center,
               onChanged: (newText) {
+                print(newText);
                 newTaskTitle = newText;
+                print(newTaskTitle);
               },
             ),
             FlatButton(
